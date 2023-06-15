@@ -32,9 +32,12 @@ export const login = async (req, res) => {
 		if (userExists) {
 			// compare password
 			const isMatch = await bcrypt.compare(password, userExists.password);
-			isMatch
-				? res.status(200).send('Login successful')
-				: res.status(401).send('Invalid credentials');
+			if (isMatch) {
+				res.cookie('userId', userExists._id.toString(), {
+					httpOnly: true,
+				});
+				res.status(200).send('Login successful');
+			} else res.status(401).send('Invalid credentials');
 		} else {
 			return res
 				.status(401)
@@ -43,4 +46,23 @@ export const login = async (req, res) => {
 	} catch (err) {
 		console.log(err);
 	}
+};
+
+export const getUser = async (req, res) => {
+	try {
+		const user = await User.findOne({ email: req.body.email });
+		res.status(200).json(user);
+		// console.log(user._id.toString());
+	} catch (err) {
+		console.log(err);
+	}
+};
+
+export const logout = (req, res) => {
+	res.clearCookie('userId', {
+		sameSite: 'none',
+		secure: true,
+	})
+		.status(200)
+		.json('logged out successfully');
 };

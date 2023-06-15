@@ -2,8 +2,15 @@ import mongoose from 'mongoose';
 const { Schema } = mongoose;
 
 const noteSchema = new Schema({
-	title: String,
-	content: String,
+	userId: {
+		type: String,
+		required: true,
+	},
+	content: {
+		type: String,
+		maxLength: 500,
+		required: true,
+	},
 	createdAt: { type: Date, default: Date.now },
 });
 

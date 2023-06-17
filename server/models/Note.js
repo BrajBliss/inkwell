@@ -8,7 +8,7 @@ const noteSchema = new Schema({
 	},
 	content: {
 		type: String,
-		maxLength: 500,
+		maxLength: 100,
 		required: true,
 	},
 	createdAt: { type: Date, default: Date.now },

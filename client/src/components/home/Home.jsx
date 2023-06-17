@@ -1,4 +1,4 @@
-import Bookmarks from '../../pages/Bookmarks/Bookmarks';
+import Notes from '../../pages/Notes/Notes';
 import Navbar from '../navbar/Navbar';
 import './home.scss';
 
@@ -6,7 +6,7 @@ const Home = () => {
 	return (
 		<div className='home'>
 			<Navbar />
-			<Bookmarks />
+			<Notes />
 		</div>
 	);
 };

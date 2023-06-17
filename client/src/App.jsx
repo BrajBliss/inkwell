@@ -1,29 +1,13 @@
 import './App.css';
-import { Outlet, RouterProvider, createBrowserRouter } from 'react-router-dom';
-import Navbar from './components/navbar/Navbar';
-import Bookmarks from './pages/Bookmarks/Bookmarks';
+import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import Register from './pages/auth/register/Register';
 import Login from './pages/auth/login/Login';
-
-const Layout = () => {
-	return (
-		<>
-			<Navbar />
-			<Outlet />
-		</>
-	);
-};
+import Home from './components/home/Home';
 
 const router = createBrowserRouter([
 	{
 		path: '/',
-		element: <Layout />,
-		children: [
-			{
-				path: '/',
-				element: <Bookmarks />,
-			},
-		],
+		element: <Home />,
 	},
 	{
 		path: '/register',

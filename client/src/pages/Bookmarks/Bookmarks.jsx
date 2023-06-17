@@ -1,4 +1,3 @@
-import React from 'react';
 import './bookmarks.scss';
 
 const Bookmarks = () => {

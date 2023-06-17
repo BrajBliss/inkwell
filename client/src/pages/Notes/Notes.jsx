@@ -18,7 +18,27 @@ const Notes = () => {
 				</div>
 
 				<div className='list-items'>
-					<div className='item1'>First Note</div>
+					<div className='item1 item'>
+						<div className='content'>First Note Content</div>
+						<div className='btn'>
+							<button className='edit'>EDIT</button>
+							<button className='delete'>DELETE</button>
+						</div>
+					</div>
+					<div className='item2 item'>
+						<div className='content'>Second Note Content</div>
+						<div className='btn'>
+							<button className='edit'>EDIT</button>
+							<button className='delete'>DELETE</button>
+						</div>
+					</div>
+					<div className='item3 item'>
+						<div className='content'>Third Note Content</div>
+						<div className='btn'>
+							<button className='edit'>EDIT</button>
+							<button className='delete'>DELETE</button>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>

@@ -1,15 +1,26 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { useContext } from 'react';
+import { AuthContext } from '../../context/authContext';
 import './navbar.scss';
 
 const Navbar = () => {
+	const navigate = useNavigate();
+
+	const { logout } = useContext(AuthContext);
+
+	const handleClick = () => {
+		logout();
+		navigate('/login');
+	};
+
 	return (
 		<div className='navbar'>
 			<Link to='/' className='logo'>
 				Ink Well
 			</Link>
-			<Link to='/login' className='user'>
+			<button className='user' onClick={handleClick}>
 				Log out
-			</Link>
+			</button>
 		</div>
 	);
 };

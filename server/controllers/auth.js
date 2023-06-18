@@ -33,10 +33,12 @@ export const login = async (req, res) => {
 			// compare password
 			const isMatch = await bcrypt.compare(password, userExists.password);
 			if (isMatch) {
-				res.cookie('userId', userExists._id.toString(), {
+				const userId = userExists._id.toString();
+				res.cookie('userId', userId, {
 					httpOnly: true,
-				});
-				res.status(200).send('Login successful');
+				})
+					.status(200)
+					.json('logged in successfully');
 			} else res.status(401).send('Invalid credentials');
 		} else {
 			return res

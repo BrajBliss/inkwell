@@ -16,11 +16,15 @@ export const createNote = async (req, res) => {
 export const getNotes = async (req, res) => {
 	try {
 		if (req.cookies.userId) {
-			const notes = await Note.find({ userId: req.cookies.userId });
+			const notes = await Note.find({ userId: req.cookies.userId }).sort({
+				createdAt: 'desc',
+			});
 			res.status(200).json(notes);
 		} else {
-			res.status(401).json({ message: 'Unauthorized' });
+			res.status(401).json({ message: 'Unauthorized, no cookie' });
 		}
+		// const notes = await Note.find();
+		// res.status(200).json(notes);
 	} catch (err) {
 		console.log(err);
 	}

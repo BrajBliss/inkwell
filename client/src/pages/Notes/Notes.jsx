@@ -5,16 +5,24 @@ import './notes.scss';
 const Notes = () => {
 	const [notes, setNotes] = useState([]);
 	const [note, setNote] = useState('');
+	const [currentPage, setCurrentPage] = useState(1);
+	const [pageSize, setPageSize] = useState(5);
+	const [totalPages, setTotalPages] = useState(0);
+	const [totalNotes, setTotalNotes] = useState(0);
 
 	useEffect(() => {
 		fetchNotes();
-	}, []);
+	}, [currentPage, pageSize]);
 
 	const fetchNotes = async () => {
 		try {
-			const response = await axios.get('/api/note');
+			const response = await axios.get(
+				`/api/note?page=${currentPage}&pageSize=${pageSize}`
+			);
 			// console.log(response.data);
-			setNotes(response.data);
+			setNotes(response.data.notes);
+			setTotalPages(response.data.totalPages);
+			setTotalNotes(response.data.totalNotes);
 		} catch (err) {
 			console.log(err);
 		}
@@ -54,14 +62,14 @@ const Notes = () => {
 			await axios.put(`/api/note/${noteId}`, {
 				content: editedContent,
 			});
-			setNotes((prevNotes) =>
-				prevNotes.map((prevNote) =>
-					prevNote._id === noteId
-						? { ...prevNote, content: editedContent }
-						: prevNote
-				)
-			);
-			// fetchNotes();
+			// setNotes((prevNotes) =>
+			// 	prevNotes.map((prevNote) =>
+			// 		prevNote._id === noteId
+			// 			? { ...prevNote, content: editedContent }
+			// 			: prevNote
+			// 	)
+			// );
+			fetchNotes();
 		} catch (err) {
 			console.log(err);
 		}
@@ -70,14 +78,16 @@ const Notes = () => {
 	const handleDelete = async (noteId) => {
 		try {
 			await axios.delete(`/api/note/${noteId}`);
-			setNotes((prevNotes) =>
-				prevNotes.filter((prevNote) => prevNote._id !== noteId)
-			);
-			// fetchNotes();
+			// setNotes((prevNotes) =>
+			// 	prevNotes.filter((prevNote) => prevNote._id !== noteId)
+			// );
+			fetchNotes();
 		} catch (err) {
 			console.log(err);
 		}
 	};
+
+	const handlePageChange = (pageNumber) => setCurrentPage(pageNumber);
 
 	return (
 		<div className='notes'>
@@ -176,6 +186,21 @@ const Notes = () => {
 						</div>
 					))}
 				</div>
+			</div>
+
+			<div className='pagination'>
+				{Array.from({ length: totalPages }, (_, i) => i + 1).map(
+					(pageNumber) => (
+						<button
+							key={pageNumber}
+							className={
+								pageNumber === currentPage ? 'active' : ''
+							}
+							onClick={() => handlePageChange(pageNumber)}>
+							{pageNumber}
+						</button>
+					)
+				)}
 			</div>
 		</div>
 	);

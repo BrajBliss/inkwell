@@ -17,7 +17,7 @@ const Notes = () => {
 	const fetchNotes = async () => {
 		try {
 			const response = await axios.get(
-				`https://inkwell-3bpy.vercel.app/api/note?page=${currentPage}&pageSize=${pageSize}`
+				`/api/note?page=${currentPage}&pageSize=${pageSize}`
 			);
 			// console.log(response.data);
 			setNotes(response.data.notes);
@@ -35,7 +35,7 @@ const Notes = () => {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		try {
-			await axios.post('https://inkwell-3bpy.vercel.app/api/note/post', {
+			await axios.post('/api/note/post', {
 				content: note,
 			});
 			// console.log(note);
@@ -59,12 +59,9 @@ const Notes = () => {
 
 	const handleEdit = async (noteId, editedContent) => {
 		try {
-			await axios.put(
-				`https://inkwell-3bpy.vercel.app/api/note/${noteId}`,
-				{
-					content: editedContent,
-				}
-			);
+			await axios.put(`/api/note/${noteId}`, {
+				content: editedContent,
+			});
 			// setNotes((prevNotes) =>
 			// 	prevNotes.map((prevNote) =>
 			// 		prevNote._id === noteId
@@ -80,9 +77,7 @@ const Notes = () => {
 
 	const handleDelete = async (noteId) => {
 		try {
-			await axios.delete(
-				`https://inkwell-3bpy.vercel.app/api/note/${noteId}`
-			);
+			await axios.delete(`/api/note/${noteId}`);
 			// setNotes((prevNotes) =>
 			// 	prevNotes.filter((prevNote) => prevNote._id !== noteId)
 			// );

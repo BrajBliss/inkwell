@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { createContext, useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 
 export const AuthContext = createContext();
 
@@ -14,15 +14,12 @@ export const AuthContextProvider = ({ children }) => {
 	}, [currentUser]);
 
 	const login = async (inputs) => {
-		const res = await axios.post(
-			'https://inkwell-3bpy.vercel.app/api/auth/login',
-			inputs
-		);
+		const res = await axios.post('/api/auth/login', inputs);
 		setCurrentUser(res.data);
 	};
 
 	const logout = async () => {
-		await axios.get('https://inkwell-3bpy.vercel.app/api/auth/logout');
+		await axios.get('/api/auth/logout');
 		setCurrentUser(null);
 	};
 

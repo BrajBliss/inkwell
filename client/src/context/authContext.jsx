@@ -14,7 +14,10 @@ export const AuthContextProvider = ({ children }) => {
 	}, [currentUser]);
 
 	const login = async (inputs) => {
-		const res = await axios.post('/api/auth/login', inputs);
+		const res = await axios.post(
+			'https://inkwell-3bpy.vercel.app/api/auth/login',
+			inputs
+		);
 		setCurrentUser(res.data);
 	};
 

@@ -8,6 +8,7 @@ import noteRoutes from './routes/note.js';
 
 const app = express();
 app.use(cors());
+app.options('*', cors()); // include before other routes
 app.use(express.json());
 app.use(cookieParser());
 

@@ -22,7 +22,7 @@ export const AuthContextProvider = ({ children }) => {
 	};
 
 	const logout = async () => {
-		await axios.get('/api/auth/logout');
+		await axios.get('https://inkwell-3bpy.vercel.app/api/auth/logout');
 		setCurrentUser(null);
 	};
 

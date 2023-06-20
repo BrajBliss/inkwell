@@ -20,7 +20,10 @@ const Register = () => {
 		// console.log(inputs);
 
 		try {
-			await axios.post('/api/auth/register', inputs);
+			await axios.post(
+				'https://inkwell-3bpy.vercel.app/api/auth/register',
+				inputs
+			);
 			navigate('/login');
 		} catch (err) {
 			console.log(err);

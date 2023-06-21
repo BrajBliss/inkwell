@@ -12,6 +12,7 @@ import { AuthContext } from './context/authContext';
 import axios from 'axios';
 
 axios.defaults.baseURL = 'https://inkwell-server.vercel.app/';
+axios.defaults.withCredentials = true;
 
 function App() {
 	const { currentUser } = useContext(AuthContext);

@@ -1,6 +1,5 @@
 import User from '../models/User.js';
 import bcrypt from 'bcrypt';
-import Cookies from 'js-cookie';
 
 const saltRounds = 10;
 
@@ -41,7 +40,7 @@ export const login = async (req, res) => {
 				})
 					.status(200)
 					.json('logged in successfully');
-				Cookies.set('userId', userID);
+				localStorage.setItem('userId', userId);
 			} else res.status(401).send('Invalid credentials');
 		} else {
 			return res

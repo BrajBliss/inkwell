@@ -144,4 +144,21 @@
             color: #282828;
         }
     }
+
+    @media screen and (max-width: 768px) {
+        .notes {
+            padding-top: 50px;
+        }
+
+        .compose {
+            .composer {
+                width: 100%;
+            }
+        }
+
+        .notes-list {
+            max-width: 80%;
+            padding: 0 10px;
+        }
+    }
 }

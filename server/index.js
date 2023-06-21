@@ -21,7 +21,15 @@ const app = express();
 // 	res.header('Access-Control-Expose-Headers', '*');
 // 	next();
 // });
-app.use(cors());
+app.use(
+	cors({
+		origin: 'https://ink-well.vercel.app',
+		methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+		preflightContinue: true,
+		optionsSuccessStatus: 204,
+		credentials: true,
+	})
+);
 app.use(express.json());
 app.use(cookieParser());
 
@@ -29,7 +37,6 @@ mongoose
 	.connect(process.env.MONGODB)
 	.then(() => console.log('Connected to MongoDB'));
 
-app.options('*', cors());
 app.use('/api/auth', authRoutes);
 app.use('/api/note', noteRoutes);
 

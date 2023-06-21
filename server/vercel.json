@@ -8,13 +8,12 @@
 	],
 	"routes": [
 		{
-			"source": "/(.*)",
-			"headers": [
-				{
-					"key": "access-control-allow-origin",
-					"value": "*"
-				}
-			]
+			"src": "/(.*)",
+			"dest": "./index.js",
+			"methods": ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
+			"headers": {
+				"Access-Control-Allow-Origin": "*"
+			}
 		}
 	]
 }

@@ -23,7 +23,7 @@ const app = express();
 // });
 app.use(
 	cors({
-		origin: 'https://ink-well.vercel.app',
+		origin: true,
 		methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
 		preflightContinue: true,
 		optionsSuccessStatus: 204,

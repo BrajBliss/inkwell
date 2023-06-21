@@ -21,7 +21,7 @@ const Register = () => {
 
 		try {
 			await axios.post(
-				'https://inkwell-3bpy.vercel.app/api/auth/register',
+				'https://inkwell-server.vercel.app/api/auth/register',
 				inputs
 			);
 			navigate('/login');

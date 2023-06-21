@@ -14,12 +14,15 @@ export const AuthContextProvider = ({ children }) => {
 	}, [currentUser]);
 
 	const login = async (inputs) => {
-		const res = await axios.post('/api/auth/login', inputs);
+		const res = await axios.post(
+			'https://inkwell-server.vercel.app/api/auth/login',
+			inputs
+		);
 		setCurrentUser(res.data);
 	};
 
 	const logout = async () => {
-		await axios.get('/api/auth/logout');
+		await axios.get('https://inkwell-server.vercel.app/api/auth/logout');
 		setCurrentUser(null);
 	};
 

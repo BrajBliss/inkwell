@@ -37,7 +37,6 @@ export const login = async (req, res) => {
 				res.cookie('userId', userId, {
 					httpOnly: true,
 					sameSite: 'none',
-					domain: '.ink-well.vercel.app, .inkwell-server.vercel.app',
 				})
 					.status(200)
 					.json('logged in successfully');

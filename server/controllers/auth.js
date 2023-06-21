@@ -37,6 +37,7 @@ export const login = async (req, res) => {
 				res.cookie('userId', userId, {
 					httpOnly: true,
 					sameSite: 'none',
+					domain: '.vercel.app',
 				})
 					.status(200)
 					.json('logged in successfully');

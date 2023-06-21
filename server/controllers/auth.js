@@ -34,11 +34,7 @@ export const login = async (req, res) => {
 			const isMatch = await bcrypt.compare(password, userExists.password);
 			if (isMatch) {
 				const userId = userExists._id.toString();
-				res.cookie('userId', userId, {
-					httpOnly: false,
-					// domain: '.vercel.app/',
-					sameSite: 'none',
-				})
+				res.cookie('userId', userId)
 					.status(200)
 					.json('logged in successfully');
 			} else res.status(401).send('Invalid credentials');

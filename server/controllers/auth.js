@@ -40,7 +40,6 @@ export const login = async (req, res) => {
 				})
 					.status(200)
 					.json('logged in successfully');
-				localStorage.setItem('userId', userId);
 			} else res.status(401).send('Invalid credentials');
 		} else {
 			return res

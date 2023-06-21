@@ -9,6 +9,9 @@ import Login from './pages/auth/login/Login';
 import Home from './components/home/Home';
 import { useContext } from 'react';
 import { AuthContext } from './context/authContext';
+import axios from 'axios';
+
+axios.defaults.baseURL = 'https://inkwell-server.vercel.app/';
 
 function App() {
 	const { currentUser } = useContext(AuthContext);

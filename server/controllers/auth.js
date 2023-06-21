@@ -64,6 +64,7 @@ export const getUser = async (req, res) => {
 
 export const logout = (req, res) => {
 	res.clearCookie('userId', {
+		httpOnly: true,
 		sameSite: 'none',
 		secure: true,
 	})

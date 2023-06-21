@@ -36,7 +36,7 @@ export const login = async (req, res) => {
 				const userId = userExists._id.toString();
 				res.cookie('userId', userId, {
 					httpOnly: true,
-					sameSite: None,
+					sameSite: 'none',
 					secure: true,
 				})
 					.status(200)

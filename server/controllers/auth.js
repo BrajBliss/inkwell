@@ -34,7 +34,9 @@ export const login = async (req, res) => {
 			const isMatch = await bcrypt.compare(password, userExists.password);
 			if (isMatch) {
 				const userId = userExists._id.toString();
-				res.cookie('userId', userId)
+				res.cookie('userId', userId, {
+					sameSite: 'none',
+				})
 					.status(200)
 					.json('logged in successfully');
 			} else res.status(401).send('Invalid credentials');

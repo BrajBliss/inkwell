@@ -1,8 +1,8 @@
 {
-	"rewrites": [
+	"redirect": [
 		{
-			"source": "/",
-			"destination": "/register"
+			"source": "/login",
+			"destination": "/"
 		}
 	]
 }

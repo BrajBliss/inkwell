@@ -1,12 +1,8 @@
 {
 	"redirects": [
 		{
-			"source": "/login",
-			"destination": "/login"
-		},
-		{
-			"source": "/register",
-			"destination": "/register"
+			"source": "/",
+			"destination": "/"
 		}
 	]
 }

@@ -1,10 +1,6 @@
 {
 	"redirects": [
 		{
-			"source": "/",
-			"destination": "/"
-		},
-		{
 			"source": "/login",
 			"destination": "/login"
 		},

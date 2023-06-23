@@ -2,11 +2,15 @@
 	"redirects": [
 		{
 			"source": "/",
-			"destination": "/index.html"
+			"destination": "/"
 		},
 		{
 			"source": "/login",
-			"destination": "/login.html"
+			"destination": "/"
+		},
+		{
+			"source": "/register",
+			"destination": "/"
 		}
 	]
 }

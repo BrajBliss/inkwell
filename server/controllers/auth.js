@@ -38,7 +38,7 @@ export const login = async (req, res) => {
 					httpOnly: true,
 					sameSite: 'none',
 					secure: true,
-					domain: 'netlify.app',
+					domain: '.vercel.app',
 				})
 					.status(200)
 					.json('logged in successfully');

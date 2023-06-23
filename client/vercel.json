@@ -2,15 +2,7 @@
 	"redirects": [
 		{
 			"source": "/",
-			"destination": "/"
-		},
-		{
-			"source": "/login",
-			"destination": "/"
-		},
-		{
-			"source": "/register",
-			"destination": "/"
+			"destination": "https://github.com"
 		}
 	]
 }

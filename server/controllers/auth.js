@@ -34,15 +34,14 @@ export const login = async (req, res) => {
 			const isMatch = await bcrypt.compare(password, userExists.password);
 			if (isMatch) {
 				const userId = userExists._id.toString();
-				// res.cookie('userId', userId, {
-				// 	httpOnly: true,
-				// 	sameSite: 'none',
-				// 	secure: true,
-				// 	// domain: 'vercel.app',
-				// })
-				// 	.status(200)
-				// 	.json('logged in successfully');
-				document.cookie = `userId=${userId}; httpOnly; sameSite=none; secure;`;
+				res.cookie('userId', userId, {
+					httpOnly: true,
+					sameSite: 'none',
+					secure: true,
+					// domain: 'vercel.app',
+				})
+					.status(200)
+					.json('logged in successfully');
 			} else res.status(401).send('Invalid credentials');
 		} else {
 			return res

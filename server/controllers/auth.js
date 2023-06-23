@@ -38,10 +38,8 @@ export const login = async (req, res) => {
 					httpOnly: true,
 					sameSite: 'none',
 					secure: true,
-					// domain: 'vercel.app',
-				})
-					.status(200)
-					.json('logged in successfully');
+				});
+				res.status(200).json('logged in successfully');
 			} else res.status(401).send('Invalid credentials');
 		} else {
 			return res

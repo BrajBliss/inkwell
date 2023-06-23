@@ -1,0 +1,16 @@
+{
+	"redirects": [
+		{
+			"source": "/",
+			"destination": "/"
+		},
+		{
+			"source": "/login",
+			"destination": "/login"
+		},
+		{
+			"source": "/register",
+			"destination": "/register"
+		}
+	]
+}

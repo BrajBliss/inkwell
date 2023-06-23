@@ -38,8 +38,7 @@ export const login = async (req, res) => {
 					httpOnly: true,
 					sameSite: 'none',
 					secure: true,
-					// domain: 'inkwell-server.netlify.app',
-					domain: 'inkwell-server.vercel.app',
+					domain: 'inkwell-server.netlify.app',
 				})
 					.status(200)
 					.json('logged in successfully');

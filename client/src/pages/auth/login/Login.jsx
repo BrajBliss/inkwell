@@ -26,6 +26,22 @@ const Login = () => {
 			navigate('/');
 		} catch (err) {
 			console.log(err);
+			if (err.response && err.response.data) {
+				if (err.response.data === 'Enter correct email address') {
+					alert('Please enter a valid email address.');
+				} else if (err.response.data === 'Wrong password') {
+					alert('Please enter the correct password.');
+				} else if (
+					err.response.data ===
+					'Email does not exist. Please register.'
+				) {
+					alert('Email does not exist. Please register.');
+				} else {
+					alert('An error occurred. Please try again later.');
+				}
+			} else {
+				alert('An error occurred. Please try again later.');
+			}
 		}
 	};
 

@@ -24,6 +24,8 @@ const Register = () => {
 			navigate('/login');
 		} catch (err) {
 			console.log(err);
+			err.response.data === 'Enter correct email address' &&
+				alert('Enter correct email address');
 		}
 	};
 

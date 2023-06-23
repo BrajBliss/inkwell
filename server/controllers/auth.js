@@ -1,10 +1,17 @@
 import User from '../models/User.js';
 import bcrypt from 'bcrypt';
+import validator from 'validator';
 
 const saltRounds = 10;
 
 export const register = async (req, res) => {
 	const { email, password } = req.body;
+
+	// Validate email
+	if (!validator.isEmail(email)) {
+		return res.status(400).send('Enter correct email address');
+	}
+
 	try {
 		// check if user already exists
 		const alreadyExists = await User.findOne({ email: email });
@@ -25,6 +32,9 @@ export const register = async (req, res) => {
 
 export const login = async (req, res) => {
 	const { email, password } = req.body;
+	if (!validator.isEmail(email)) {
+		return res.status(400).send('Enter correct email address');
+	}
 
 	try {
 		// check if user exists
@@ -40,7 +50,7 @@ export const login = async (req, res) => {
 					secure: true,
 				});
 				res.status(200).json('logged in successfully');
-			} else res.status(401).send('Invalid credentials');
+			} else res.status(401).send('Wrong password');
 		} else {
 			return res
 				.status(401)

@@ -37,10 +37,10 @@ const Login = () => {
 				) {
 					alert('Email does not exist. Please register.');
 				} else {
-					alert('An error occurred. Please try again later.');
+					alert('Please try again.');
 				}
 			} else {
-				alert('An error occurred. Please try again later.');
+				alert('Please try again.');
 			}
 		}
 	};

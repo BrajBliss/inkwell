@@ -37,7 +37,9 @@ export const getNotes = async (req, res) => {
 				totalNotes,
 			});
 		} else {
-			res.status(401).json({ message: 'Unauthorized, no cookie' });
+			res.status(401).json({
+				message: 'Unauthorized, no cookie',
+			});
 		}
 		// const notes = await Note.find();
 		// res.status(200).json(notes);

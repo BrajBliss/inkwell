@@ -11,6 +11,7 @@ import { useContext } from 'react';
 import { AuthContext } from './context/authContext';
 import axios from 'axios';
 
+// axios.defaults.baseURL = 'http://localhost:3000/';
 axios.defaults.baseURL = 'https://inkwell-server.vercel.app/';
 axios.defaults.withCredentials = true;
 
@@ -31,6 +32,10 @@ function App() {
 		{
 			path: '/login',
 			element: currentUser ? <Navigate to='/' /> : <Login />,
+		},
+		{
+			path: '/:userId',
+			element: currentUser ? <Home /> : <Navigate to='/login' />,
 		},
 	]);
 

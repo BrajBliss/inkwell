@@ -9,6 +9,8 @@ const Notes = () => {
 	const [pageSize, setPageSize] = useState(5);
 	const [totalPages, setTotalPages] = useState(0);
 	const [totalNotes, setTotalNotes] = useState(0);
+	// const userIdFromParam = window.location.pathname.split('/')[1];
+	// console.log(userIdFromParam);
 
 	useEffect(() => {
 		fetchNotes();

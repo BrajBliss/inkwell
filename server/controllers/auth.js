@@ -44,16 +44,16 @@ export const login = async (req, res) => {
 			const isMatch = await bcrypt.compare(password, userExists.password);
 			if (isMatch) {
 				const userId = userExists._id.toString();
-				// res.cookie('userId', userId, {
-				// 	httpOnly: true,
-				// 	sameSite: 'none',
-				// 	secure: true,
-				// })
-				res.setHeader('Set-Cookie', [
-					`userId=${userId}; HttpOnly; SameSite=None; Secure`,
-				])
+				res.cookie('userId', userId, {
+					httpOnly: true,
+					sameSite: 'none',
+					secure: true,
+				})
 					.status(200)
-					.json({ message: 'Logged in successfully' });
+					.json('Logged in successfully');
+				// res.setHeader('Set-Cookie', [
+				// 	`userId=${userId}; HttpOnly; SameSite=None; Secure`,
+				// ])
 			} else res.status(401).send('Wrong password');
 		} else {
 			return res

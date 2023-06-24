@@ -11,31 +11,31 @@ import { useContext } from 'react';
 import { AuthContext } from './context/authContext';
 import axios from 'axios';
 
-// axios.defaults.baseURL = 'http://localhost:3000/';
-axios.defaults.baseURL = 'https://inkwell-server.vercel.app/';
+axios.defaults.baseURL = 'http://localhost:3000/';
+// axios.defaults.baseURL = 'https://inkwell-server.vercel.app/';
 axios.defaults.withCredentials = true;
 
 function App() {
-	const { currentUser } = useContext(AuthContext);
+	const { user } = useContext(AuthContext);
 
 	const router = createBrowserRouter([
 		{
 			path: '/',
 
-			element: currentUser ? <Home /> : <Navigate to='/login' />,
+			element: user ? <Home /> : <Navigate to='/login' />,
 			// element: <Home />,
 		},
 		{
 			path: '/register',
-			element: currentUser ? <Navigate to='/' /> : <Register />,
+			element: user ? <Navigate to='/' /> : <Register />,
 		},
 		{
 			path: '/login',
-			element: currentUser ? <Navigate to='/' /> : <Login />,
+			element: user ? <Navigate to='/' /> : <Login />,
 		},
 		{
 			path: '/:userId',
-			element: currentUser ? <Home /> : <Navigate to='/login' />,
+			element: user ? <Home /> : <Navigate to='/login' />,
 		},
 	]);
 

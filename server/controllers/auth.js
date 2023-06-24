@@ -45,13 +45,15 @@ export const login = async (req, res) => {
 			if (isMatch) {
 				const userId = userExists._id.toString();
 				console.log(req.headers);
-				res.cookie('userId', userId, {
-					// httpOnly: true,
-					sameSite: 'none',
-					secure: true,
-				})
-					.status(200)
-					.json('logged in successfully');
+				// res.cookie('userId', userId, {
+				// 	// httpOnly: true,
+				// 	sameSite: 'none',
+				// 	secure: true,
+				// });
+				res.status(200).json({
+					message: 'logged in successfully',
+					userId: userId,
+				});
 				console.log(res.getHeaders());
 				// res.setHeader('Set-Cookie', [
 				// 	`userId=${userId}; HttpOnly; SameSite=None; Secure`,
@@ -78,11 +80,13 @@ export const getUser = async (req, res) => {
 };
 
 export const logout = (req, res) => {
-	res.clearCookie('userId', {
-		// httpOnly: true,
-		sameSite: 'none',
-		secure: true,
-	})
-		.status(200)
-		.json('logged out successfully');
+	// res.clearCookie('userId', {
+	// 	// httpOnly: true,
+	// 	sameSite: 'none',
+	// 	secure: true,
+	// })
+	res.status(200).json({
+		message: 'logged out successfully',
+		userId: '',
+	});
 };

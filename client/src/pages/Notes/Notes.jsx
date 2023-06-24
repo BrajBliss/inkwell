@@ -1,6 +1,7 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import axios from 'axios';
 import './notes.scss';
+import { AuthContext } from '../../context/authContext';
 
 const Notes = () => {
 	const [notes, setNotes] = useState([]);
@@ -12,6 +13,8 @@ const Notes = () => {
 	// const userIdFromParam = window.location.pathname.split('/')[1];
 	// console.log(userIdFromParam);
 
+	const { user } = useContext(AuthContext);
+
 	useEffect(() => {
 		fetchNotes();
 	}, [currentPage, pageSize]);
@@ -19,7 +22,7 @@ const Notes = () => {
 	const fetchNotes = async () => {
 		try {
 			const response = await axios.get(
-				`/api/note?page=${currentPage}&pageSize=${pageSize}`
+				`/api/note?page=${currentPage}&pageSize=${pageSize}&userId=${user}`
 			);
 			// console.log(response.data);
 			setNotes(response.data.notes);
@@ -37,7 +40,7 @@ const Notes = () => {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		try {
-			await axios.post('/api/note/post', {
+			await axios.post(`/api/note/post/${user}`, {
 				content: note,
 			});
 			// console.log(note);

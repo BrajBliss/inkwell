@@ -5,26 +5,26 @@ import { createContext, useState, useEffect } from 'react';
 export const AuthContext = createContext();
 
 export const AuthContextProvider = ({ children }) => {
-	const [currentUser, setCurrentUser] = useState(
-		JSON.parse(localStorage.getItem('user')) || null
+	const [user, setUser] = useState(
+		JSON.parse(localStorage.getItem('userId')) || null
 	);
 
 	useEffect(() => {
-		localStorage.setItem('user', JSON.stringify(currentUser));
-	}, [currentUser]);
+		localStorage.setItem('userId', JSON.stringify(user));
+	}, [user]);
 
 	const login = async (inputs) => {
 		const res = await axios.post('/api/auth/login', inputs);
-		setCurrentUser(res.data);
+		setUser(res.data.userId);
 	};
 
 	const logout = async () => {
 		await axios.get('/api/auth/logout');
-		setCurrentUser(null);
+		setUser(null);
 	};
 
 	const authContextValue = {
-		currentUser,
+		user,
 		login,
 		logout,
 	};

@@ -44,13 +44,15 @@ export const login = async (req, res) => {
 			const isMatch = await bcrypt.compare(password, userExists.password);
 			if (isMatch) {
 				const userId = userExists._id.toString();
+				console.log(req.headers);
 				res.cookie('userId', userId, {
-					httpOnly: true,
+					// httpOnly: true,
 					sameSite: 'none',
 					secure: true,
 				})
 					.status(200)
-					.json('Logged in successfully');
+					.json('logged in successfully');
+				console.log(res.getHeaders());
 				// res.setHeader('Set-Cookie', [
 				// 	`userId=${userId}; HttpOnly; SameSite=None; Secure`,
 				// ])
@@ -77,7 +79,7 @@ export const getUser = async (req, res) => {
 
 export const logout = (req, res) => {
 	res.clearCookie('userId', {
-		httpOnly: true,
+		// httpOnly: true,
 		sameSite: 'none',
 		secure: true,
 	})

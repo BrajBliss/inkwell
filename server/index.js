@@ -21,15 +21,15 @@ const app = express();
 // 	res.header('Access-Control-Expose-Headers', '*');
 // 	next();
 // });
-// app.use(
-// 	cors({
-// 		origin: true,
-// 		methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-// 		preflightContinue: true,
-// 		optionsSuccessStatus: 204,
-// 		credentials: true,
-// 	})
-// );
+app.use(
+	cors({
+		origin: true,
+		methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+		preflightContinue: true,
+		optionsSuccessStatus: 204,
+		credentials: true,
+	})
+);
 app.use(express.json());
 app.use(cookieParser());
 

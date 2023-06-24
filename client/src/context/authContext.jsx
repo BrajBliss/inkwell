@@ -10,7 +10,7 @@ export const AuthContextProvider = ({ children }) => {
 	);
 
 	useEffect(() => {
-		localStorage.setItem('userId', JSON.stringify(user));
+		localStorage.setItem('userId', JSON.stringify(userId));
 	}, [userId]);
 
 	const login = async (inputs) => {

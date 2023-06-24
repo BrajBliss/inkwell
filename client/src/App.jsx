@@ -16,26 +16,26 @@ axios.defaults.baseURL = 'http://localhost:3000/';
 axios.defaults.withCredentials = true;
 
 function App() {
-	const { user } = useContext(AuthContext);
+	const { userId } = useContext(AuthContext);
 
 	const router = createBrowserRouter([
 		{
 			path: '/',
 
-			element: user ? <Home /> : <Navigate to='/login' />,
+			element: userId ? <Home /> : <Navigate to='/login' />,
 			// element: <Home />,
 		},
 		{
 			path: '/register',
-			element: user ? <Navigate to='/' /> : <Register />,
+			element: userId ? <Navigate to='/' /> : <Register />,
 		},
 		{
 			path: '/login',
-			element: user ? <Navigate to='/' /> : <Login />,
+			element: userId ? <Navigate to='/' /> : <Login />,
 		},
 		{
-			path: '/:userId',
-			element: user ? <Home /> : <Navigate to='/login' />,
+			path: '/:userIdId',
+			element: userId ? <Home /> : <Navigate to='/login' />,
 		},
 	]);
 

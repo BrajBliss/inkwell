@@ -13,7 +13,7 @@ const Notes = () => {
 	// const userIdFromParam = window.location.pathname.split('/')[1];
 	// console.log(userIdFromParam);
 
-	const { user } = useContext(AuthContext);
+	const { userId } = useContext(AuthContext);
 
 	useEffect(() => {
 		fetchNotes();
@@ -22,7 +22,7 @@ const Notes = () => {
 	const fetchNotes = async () => {
 		try {
 			const response = await axios.get(
-				`/api/note?page=${currentPage}&pageSize=${pageSize}&userId=${user}`
+				`/api/note?page=${currentPage}&pageSize=${pageSize}&userId=${userId}`
 			);
 			// console.log(response.data);
 			setNotes(response.data.notes);
@@ -40,7 +40,7 @@ const Notes = () => {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		try {
-			await axios.post(`/api/note/post/${user}`, {
+			await axios.post(`/api/note/post/${userId}`, {
 				content: note,
 			});
 			// console.log(note);

@@ -5,26 +5,26 @@ import { createContext, useState, useEffect } from 'react';
 export const AuthContext = createContext();
 
 export const AuthContextProvider = ({ children }) => {
-	const [user, setUser] = useState(
+	const [userId, setUserId] = useState(
 		JSON.parse(localStorage.getItem('userId')) || null
 	);
 
 	useEffect(() => {
 		localStorage.setItem('userId', JSON.stringify(user));
-	}, [user]);
+	}, [userId]);
 
 	const login = async (inputs) => {
 		const res = await axios.post('/api/auth/login', inputs);
-		setUser(res.data.userId);
+		setUserId(res.data.userId);
 	};
 
 	const logout = async () => {
 		await axios.get('/api/auth/logout');
-		setUser(null);
+		setUserId(null);
 	};
 
 	const authContextValue = {
-		user,
+		userId,
 		login,
 		logout,
 	};

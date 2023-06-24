@@ -51,7 +51,6 @@ export const login = async (req, res) => {
 				// 	secure: true,
 				// });
 				res.status(200).json({
-					message: 'logged in successfully',
 					userId: userId,
 				});
 				console.log(res.getHeaders());

@@ -2,6 +2,7 @@ import './login.scss';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../context/authContext';
 import { useContext, useState } from 'react';
+import SyncLoader from 'react-spinners/SyncLoader';
 
 const Login = () => {
 	const [inputs, setInputs] = useState({
@@ -9,6 +10,8 @@ const Login = () => {
 		password: '',
 	});
 
+	const [isLoading, setIsLoading] = useState(false);
+	const color = 'rgba(255, 255, 255, 0.87)';
 	const navigate = useNavigate();
 
 	const { login } = useContext(AuthContext);
@@ -22,9 +25,12 @@ const Login = () => {
 		// console.log(inputs);
 
 		try {
+			setIsLoading(true);
 			await login(inputs);
+			setIsLoading(false);
 			navigate('/');
 		} catch (err) {
+			setIsLoading(false);
 			console.log(err);
 			if (err.response && err.response.data) {
 				if (err.response.data === 'Enter correct email address') {
@@ -64,7 +70,17 @@ const Login = () => {
 					onChange={handleChange}
 				/>
 				<button className='login-btn' onClick={handleClick}>
-					Login
+					{isLoading ? (
+						<SyncLoader
+							color={color}
+							loading={isLoading}
+							// cssOverride={override}
+							size={3}
+							margin={0}
+						/>
+					) : (
+						'Login'
+					)}
 				</button>
 				<Link className='sign-up' to='/register'>
 					Sign up!

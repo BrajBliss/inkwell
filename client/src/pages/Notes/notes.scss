@@ -40,6 +40,10 @@
         align-items: center;
         gap: 10px;
 
+        .loader-main {
+            margin: 25px 0;
+        }
+
         .list-header {
             display: flex;
             width: 100%;

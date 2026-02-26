@@ -6,3 +6,4 @@
 - Bugs? 🐛 Open an issue.
 - Client: [ink-well.vercel.app](https://ink-well.vercel.app)
 - API: 🔜
+- DEMO VIDEO: https://youtu.be/sf3Io5dV-Tk
